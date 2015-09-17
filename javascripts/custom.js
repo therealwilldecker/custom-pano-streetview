@@ -47,7 +47,7 @@ function initialize() {
         // photosphere is either a custom one or the starting one
         google.maps.event.addListener(photosphere, 'links_changed',
           function() {
-            createCustomLinks(result.location.pano);
+            makeMyLinks(result.location.pano);
           });
       }
     });
