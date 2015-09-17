@@ -30,7 +30,7 @@ function initialize() {
   var photoOptions = {
     position: sanCarlos,
     visible: true,
-    panoProvider: getCustomPhotosphere
+    panoProvider: getOurPhotosphere
   };
   photosphere.setOptions(photoOptions);
   
