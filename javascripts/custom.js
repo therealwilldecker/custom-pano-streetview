@@ -24,7 +24,7 @@ function initialize() {
   var ourMap = new google.maps.Map(document.getElementById('map-canvas'),
     myMapOptions);
     
-  photosphere = map.getStreetView();
+  photosphere = ourMap.getStreetView();
   // Let's setup our streetview and make sure it is visible.
   // First, register a photosphere getter function.
   var photoOptions = {
