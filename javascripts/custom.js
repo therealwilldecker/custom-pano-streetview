@@ -109,7 +109,7 @@ function makeMyLinks(letsStartOurWalk) {
   switch(photoId) {
     case letsStartOurWalk:
       links.push({
-        heading: 55,
+        heading: 235,
         description: 'My Favorite View',
         pano: 'myFavoriteView'
       });
@@ -129,7 +129,7 @@ function makeMyLinks(letsStartOurWalk) {
     case 'heartLake':
       links.push({
         heading: 55,
-        description: 'My Favorite View',
+        description: 'San Carlos',
         pano: 'myFavoriteView'
       });
       break;
