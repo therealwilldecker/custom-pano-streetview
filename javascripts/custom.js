@@ -53,6 +53,30 @@ function initialize() {
           });
       }
     });
+
+  if(window.DeviceMotionEvent!=undefined){
+    var alpha = 0;
+    var beta = 0;
+    var gamma = 0;
+    
+    window.ondeviceorientation = function(event){
+      alpha = Math.round(event.alpha);
+      beta = Math.round(event.beta);
+      gamma = Math.round(event.gamma);
+    }
+    
+    var myMapPOV;
+    
+    setInterval(function(){
+        myMapPov = {
+          pov: {
+            heading: gamma,
+            pitch: beta
+          }
+        };
+        ourMap.setPov(myMapPov)
+    }, 100);
+  }
 }
 
 function getOurPhotosphere(pano) {
@@ -202,30 +226,6 @@ function makeMyLinks(letsStartOurWalk) {
     default:
       return;
   }
-}
-
-if(window.DeviceMotionEvent!=undefined){
-  var alpha = 0;
-  var beta = 0;
-  var gamma = 0;
-  
-  window.ondeviceorientation = function(event){
-    alpha = Math.round(event.alpha);
-    beta = Math.round(event.beta);
-    gamma = Math.round(event.gamma);
-  }
-  
-  var myMapPOV;
-  
-  setInterval(function(){
-      myMapPov = {
-        pov: {
-          heading: gamma,
-          pitch: beta
-        }
-      };
-      ourMap.setPov(myMapPov)
-  }, 100);
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
