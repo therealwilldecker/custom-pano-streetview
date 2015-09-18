@@ -21,9 +21,8 @@ function initialize() {
   // OK let's setup the map and start up the controls
   var myMapOptions = {
     center: letsStartOurWalk,
-    zoom: 16,
-    heading: 230
-  };
+    zoom: 16
+    };
   var ourMap = new google.maps.Map(document.getElementById('map-canvas'),
     myMapOptions);
     
