@@ -204,4 +204,20 @@ function makeMyLinks(letsStartOurWalk) {
   }
 }
 
+if(window.DeviceMotionEvent!=undefined){
+  window.ondeviceorientation = function(event){
+    alpah = Math.round(event.alpha);
+    beta = Math.round(event.beta);
+    gamma = Matth.round(event.gamma);
+  }
+  
+  setInterval(function(){
+    StreetViewPanoramaCamera camera = new StreetViewPanoramaCamera.Builder()
+      .zoom(ourMap.getPanoramaCamera().zoom)
+      .tilt(ourMap.getPanoramaCamera().tilt + beta)
+      .bearing(ourMap.getPanoramaCamera().bearing + gamma)
+      .build();
+  }, delay);
+}
+
 google.maps.event.addDomListener(window, 'load', initialize);
