@@ -1,8 +1,10 @@
-var welcomeString = '******************************'+
-'* Welcome to View My Shoes!! *'+
-'******************************';
+var welcomeArray = ('******************************',
+'* Welcome to View My Shoes!! *',
+'******************************');
 
-console.log(welcomeString);
+for (var i = 0; i < welcomeArray.length; i++ ) {
+  console.log(welcomeArray[i]);
+}
 
 var photosphere;
 
@@ -68,9 +70,28 @@ function getOurPhotosphere(pano) {
           tileSize: new google.maps.Size(1024, 512),
           worldSize: new google.maps.Size(1024, 512),
           // The heading at the origin of the photosphere
-          centerHeading: 100,
+          centerHeading: 280,
           getTileUrl: function() {
             return 'https://farm8.staticflickr.com/7494/15539086363_c6402dd7bc_b.jpg';
+            }
+          }
+        };
+        break;
+    case 'heartLake':
+      return {
+        location: {
+          pano: 'heartLake',
+          description: 'Let\'s Go to Shasta',
+          latLng: new google.maps.LatLng(40.434362,-121.596019)
+        },
+        links: [],
+        tiles: {
+          tileSize: new google.maps.Size(1024, 512),
+          worldSize: new google.maps.Size(1024, 512),
+          // The heading at the origin of the photosphere
+          centerHeading: 280,
+          getTileUrl: function() {
+            return 'https://farm6.staticflickr.com/5712/21505883091_cd24bcf217_b.jpg';
             }
           }
         };
@@ -98,6 +119,18 @@ function makeMyLinks(letsStartOurWalk) {
         heading: 55,
         description: 'Back',
         pano: letsStartOurWalk
+      },
+      {
+        heading: 200,
+        description: 'Let\'s Go to Shasta!',
+        pano: 'heartLake'
+      });
+      break;
+    case 'heartLake':
+      links.push({
+        heading: 55,
+        description: 'My Favorite View',
+        pano: 'myFavoriteView'
       });
       break;
     default:
