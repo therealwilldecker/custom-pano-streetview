@@ -96,6 +96,44 @@ function getOurPhotosphere(pano) {
           }
         };
         break;
+    case 'montecitoBalcony':
+      return {
+        location: {
+          pano: 'montecitoBalcony',
+          description: 'Montecito Lodge - Balcony',
+          latLng: new google.maps.LatLng(36.694576,-118.872457)
+        },
+        links: [],
+        tiles: {
+          tileSize: new google.maps.Size(1024, 512),
+          worldSize: new google.maps.Size(1024, 512),
+          // The heading at the origin of the photosphere
+          centerHeading: 280,
+          getTileUrl: function() {
+            return 'https://farm1.staticflickr.com/295/18451789334_da965eb5bc_b.jpg';
+            }
+          }
+        };
+        break;
+    case 'montecitoPool':
+      return {
+        location: {
+          pano: 'montecitoPool',
+          description: 'Montecito Lodge - Pool',
+          latLng: new google.maps.LatLng(36.694576,-118.872457)
+        },
+        links: [],
+        tiles: {
+          tileSize: new google.maps.Size(1024, 512),
+          worldSize: new google.maps.Size(1024, 512),
+          // The heading at the origin of the photosphere
+          centerHeading: 280,
+          getTileUrl: function() {
+            return 'https://farm1.staticflickr.com/303/18451845364_97439f775d_b.jpg';
+            }
+          }
+        };
+        break;
       default:
         return null;
   }
@@ -128,9 +166,37 @@ function makeMyLinks(letsStartOurWalk) {
       break;
     case 'heartLake':
       links.push({
+        heading: 200,
+        description: 'Off to Montecito!',
+        pano: 'montecitoBalcony'
+      },{
         heading: 55,
         description: 'Back to San Carlos',
         pano: 'myFavoriteView'
+      });
+      break;
+    case 'montecitoBalcony':
+      links.push({
+        heading: 55,
+        description: 'To the pool!',
+        pano: 'montecitoPool'
+      },
+      {
+        heading: 200,
+        description: 'Back to Shasta',
+        pano: 'heartLake'
+      });
+      break;
+    case 'montecitoPool':
+      links.push({
+        heading: 55,
+        description: 'Back to the balcony',
+        pano: 'montecitoBalcony'
+      },
+      {
+        heading: 200,
+        description: 'Home to San Carlos',
+        pano: letsStartOurWalk
       });
       break;
     default:
