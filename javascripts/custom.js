@@ -1,6 +1,6 @@
-var welcomeArray = ('******************************',
+var welcomeArray = ['******************************',
 '* Welcome to View My Shoes!! *',
-'******************************');
+'******************************'];
 
 for (var i = 0; i < welcomeArray.length; i++ ) {
   console.log(welcomeArray[i]);
