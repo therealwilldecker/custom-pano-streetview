@@ -70,7 +70,7 @@ function initialize() {
     setInterval(function(){
         myPOV = {
           pov: {
-            heading: gamma,
+            heading: -gamma,
             pitch: beta
           }
         };
