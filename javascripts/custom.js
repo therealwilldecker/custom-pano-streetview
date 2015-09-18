@@ -129,7 +129,7 @@ function makeMyLinks(letsStartOurWalk) {
     case 'heartLake':
       links.push({
         heading: 55,
-        description: 'San Carlos',
+        description: 'Back to San Carlos',
         pano: 'myFavoriteView'
       });
       break;
