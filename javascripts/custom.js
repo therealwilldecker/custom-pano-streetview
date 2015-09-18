@@ -65,16 +65,16 @@ function initialize() {
       gamma = Math.round(event.gamma);
     }
     
-    var myMapPOV;
+    var myPOV;
     
     setInterval(function(){
-        myMapPov = {
+        myPOV = {
           pov: {
             heading: gamma,
             pitch: beta
           }
         };
-        ourMap.setPov(myMapPov)
+        photosphere.setOptions(myPOV)
     }, 100);
   }
 }
