@@ -211,12 +211,16 @@ if(window.DeviceMotionEvent!=undefined){
     gamma = Matth.round(event.gamma);
   }
   
+  var myMapPOV;
+  
   setInterval(function(){
-    StreetViewPanoramaCamera camera = new StreetViewPanoramaCamera.Builder()
-      .zoom(ourMap.getPanoramaCamera().zoom)
-      .tilt(ourMap.getPanoramaCamera().tilt + beta)
-      .bearing(ourMap.getPanoramaCamera().bearing + gamma)
-      .build();
+      myMapPov = {
+        pov: {
+          heading: gamma,
+          pitch: beta
+        }
+      };
+      ourMap.setPov(myMapPov)
   }, delay);
 }
 
