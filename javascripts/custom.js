@@ -205,10 +205,14 @@ function makeMyLinks(letsStartOurWalk) {
 }
 
 if(window.DeviceMotionEvent!=undefined){
+  var alpha = 0;
+  var beta = 0;
+  var gamma = 0;
+  
   window.ondeviceorientation = function(event){
-    alpah = Math.round(event.alpha);
+    alpha = Math.round(event.alpha);
     beta = Math.round(event.beta);
-    gamma = Matth.round(event.gamma);
+    gamma = Math.round(event.gamma);
   }
   
   var myMapPOV;
