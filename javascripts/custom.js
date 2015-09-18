@@ -221,7 +221,7 @@ if(window.DeviceMotionEvent!=undefined){
         }
       };
       ourMap.setPov(myMapPov)
-  }, delay);
+  }, 100);
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
