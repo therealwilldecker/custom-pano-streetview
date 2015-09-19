@@ -102,8 +102,10 @@ function initialize() {
   
         setInterval(function(){
           myStereoPhotosphere.setOptions(myPOV);
-          myStereoLocation = {
-            location: photosphere.location
+          myStereoDetails = {
+            location: photosphere.location,
+            links: photosphere.links,
+            tiles: photosphere.tiles
           };
           myStereoPhotosphere.setOptions(myStereoLocation);
         }, 50);
