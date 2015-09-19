@@ -77,7 +77,7 @@ function initialize() {
         photosphere.setOptions(myPOV)
     }, 25);
     
-    if (window.innerHeight < window.innerWidth) {
+    if (Math.abs(gamma) >= 85 && Math.abs(gamma) <= 95) {
       document.getElementById('map-canvas').style.width = '50%';
       document.getElementById('map-horizontal-2').style.cssText = 'width:50%;height:100%;z-index=1;top:-100%;right:-50%';
       var ourStereoMap = new google.maps.Map(document.getElementById('map-horizontal-2'),
