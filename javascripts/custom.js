@@ -99,8 +99,8 @@ function initialize() {
         });
 
       setInterval(function(){
-        myPOV = photosphere.getPhotographerPov();
-        myStereoPhotosphere.setOptions(myPOV)
+        myStereoPOV = photosphere.getPhotographerPov();
+        myStereoPhotosphere.setOptions(myStereoPOV)
       }, 100);
 //    }
   }
