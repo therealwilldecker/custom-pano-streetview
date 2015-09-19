@@ -92,7 +92,7 @@ function initialize() {
             if(status == google.maps.StreetViewStatus.OK) {
               // Monitor the links_changed event to check if the current
               // photosphere is either a custom one or the starting one
-              google.maps.event.addListener(photosphere, 'links_changed',
+              google.maps.event.addListener(myStereoPhotosphere, 'links_changed',
                 function() {
                   makeMyLinks(myStereoPhotosphere, result.location.pano);
                 });
