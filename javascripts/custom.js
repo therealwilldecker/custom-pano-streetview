@@ -49,7 +49,7 @@ function initialize() {
         // photosphere is either a custom one or the starting one
         google.maps.event.addListener(photosphere, 'links_changed',
           function() {
-            makeMyLinks(result.location.pano);
+            makeMyLinks(photosphere, result.location.pano);
           });
       }
     });
@@ -85,6 +85,18 @@ function initialize() {
         
       myStereoPhotosphere = ourStereoMap.getStreetView();
       myStereoPhotosphere.setOptions(photoOptions);
+
+      streetViewService.getPanoramaByLocation(sanCarlos, radius,
+        function(result, status) {
+          if(status == google.maps.StreetViewStatus.OK) {
+            // Monitor the links_changed event to check if the current
+            // photosphere is either a custom one or the starting one
+            google.maps.event.addListener(photosphere, 'links_changed',
+              function() {
+                makeMyLinks(myStereoPhotosphere, result.location.pano);
+              });
+          }
+        });
 
       setInterval(function(){
         myPOV = photosphere.getPhotographerPov();
@@ -178,7 +190,7 @@ function getOurPhotosphere(pano) {
   }
 }
 
-function makeMyLinks(letsStartOurWalk) {
+function makeMyLinks(photosphere, letsStartOurWalk) {
   // Adds links into the street view along with photo info.
   var links = photosphere.getLinks();
   var photoId = photosphere.getPano();
