@@ -98,7 +98,6 @@ function initialize() {
           }
         });
 
-      console.log(myStereoPOV);
       setInterval(function(){
         myStereoPOV = photosphere.getPov();
         myStereoPhotosphere.setOptions(myStereoPOV);
