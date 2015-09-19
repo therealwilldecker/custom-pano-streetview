@@ -98,7 +98,7 @@ function initialize() {
           }
         });
 
-      myStereoPOV = photosphere.getOptions();
+      myStereoPOV = photosphere.getPov();
       console.log(myStereoPOV);
       setInterval(function(){
 //        myStereoPOV = photosphere.StreetViewPov();
