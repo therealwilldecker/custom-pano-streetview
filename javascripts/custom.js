@@ -49,7 +49,7 @@ function initialize() {
         // photosphere is either a custom one or the starting one
         google.maps.event.addListener(photosphere, 'links_changed',
           function() {
-            makeMyLinks(result.location.pano);
+            makeMyLinks(photosphere, result.location.pano);
           });
       }
     });
@@ -76,6 +76,25 @@ function initialize() {
         };
         photosphere.setOptions(myPOV)
     }, 100);
+    
+    if (gamma <= 95 && gamma >= 85) {
+      document.getElementById('map-canvas').style.width = '50%';
+      document.getElementById('map-horizontal-2').style.width = '50%';
+      var ourStereoMap = new google.maps.Map(document.getElementById('map-horizontal-2'),
+        myMapOptions);
+        
+      myStereoPhotosphere = ourStereoMap.getStreetView();
+      myStereoPhotosphere.setOptions(photoOptions);
+      google.maps.event.addListener(photosphere, 'links_changed',
+        function() {
+          makeMyLinks(myStereoPhotosphere, result.location.pano);
+        });
+        
+      setInterval(function(){
+        myPOV = photosphere.getPhotographerPov();
+        myStereoPhotosphere.setOptions(myPOV)
+      }, 100);
+    }
   }
 }
 
@@ -163,7 +182,7 @@ function getOurPhotosphere(pano) {
   }
 }
 
-function makeMyLinks(letsStartOurWalk) {
+function makeMyLinks(photosphere, letsStartOurWalk) {
   // Adds links into the street view along with photo info.
   var links = photosphere.getLinks();
   var photoId = photosphere.getPano();
