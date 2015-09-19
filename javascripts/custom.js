@@ -98,11 +98,10 @@ function initialize() {
           }
         });
 
-      myStereoPOV = photosphere.getPov();
       console.log(myStereoPOV);
       setInterval(function(){
-//        myStereoPOV = photosphere.StreetViewPov();
-//        myStereoPhotosphere.setOptions(myStereoPOV);
+        myStereoPOV = photosphere.getPov();
+        myStereoPhotosphere.setOptions(myStereoPOV);
       }, 25);
 //    }
   }
