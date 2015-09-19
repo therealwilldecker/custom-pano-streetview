@@ -102,7 +102,11 @@ function initialize() {
   
         setInterval(function(){
           myStereoPhotosphere.setOptions(myPOV);
-        }, 25);
+          myStereoLocation = {
+            location: photosphere.location
+          };
+          myStereoPhotosphere = setOptions(myStereoLocation);
+        }, 50);
       } else {
         document.getElementById('map-canvas').style.width='100%';
         document.getElementById('map-horizontal-2').style.display='none';
