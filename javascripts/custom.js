@@ -75,9 +75,9 @@ function initialize() {
           }
         };
         photosphere.setOptions(myPOV)
-    }, 50);
+    }, 25);
     
-    if (gamma <= 95 && gamma >= 85) {
+//    if (gamma <= 95 && gamma >= 85) {
       document.getElementById('map-canvas').style.width = '50%';
       document.getElementById('map-horizontal-2').style.width = '50%';
       var ourStereoMap = new google.maps.Map(document.getElementById('map-horizontal-2'),
@@ -94,7 +94,7 @@ function initialize() {
         myPOV = photosphere.getPhotographerPov();
         myStereoPhotosphere.setOptions(myPOV)
       }, 100);
-    }
+//    }
   }
 }
 
