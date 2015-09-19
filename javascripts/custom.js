@@ -75,7 +75,7 @@ function initialize() {
           }
         };
         photosphere.setOptions(myPOV)
-    }, 100);
+    }, 50);
     
     if (gamma <= 95 && gamma >= 85) {
       document.getElementById('map-canvas').style.width = '50%';
