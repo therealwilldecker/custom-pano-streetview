@@ -104,8 +104,8 @@ function initialize() {
           myStereoPhotosphere.setOptions(myPOV);
           myStereoDetails = {
             location: photosphere.location,
-            links: photosphere.links,
-            tiles: photosphere.tiles
+            links: photosphere.links, // this needs to be in an array and is not
+            tiles: photosphere.tiles // this is not a property. will need to determine values or define new pano function
           };
           myStereoPhotosphere.setOptions(myStereoDetails);
         }, 50);
@@ -114,11 +114,11 @@ function initialize() {
         document.getElementById('map-horizontal-2').style.display='none';
       }
     }
-  
+/*  
     addMyStereo();
     window.addEventListener("orientationchange", function(){
       addMyStereo();
-    }, false);
+    }, false);*/
   }
 }
 
