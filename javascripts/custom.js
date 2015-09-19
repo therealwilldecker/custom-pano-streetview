@@ -105,7 +105,7 @@ function initialize() {
           myStereoLocation = {
             location: photosphere.location
           };
-          myStereoPhotosphere = setOptions(myStereoLocation);
+          myStereoPhotosphere.setOptions(myStereoLocation);
         }, 50);
       } else {
         document.getElementById('map-canvas').style.width='100%';
