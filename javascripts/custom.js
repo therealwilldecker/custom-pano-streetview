@@ -104,7 +104,7 @@ function initialize() {
         }, 25);
       } else {
         document.getElementById('map-canvas').style.width='100%';
-        document.getElementById('map-horizontal-2').style.display='None';
+        document.getElementById('map-horizontal-2').style.display='none';
       }
     }
   
