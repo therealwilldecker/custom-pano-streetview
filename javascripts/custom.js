@@ -79,7 +79,7 @@ function initialize() {
     
 //    if (gamma <= 95 && gamma >= 85) {
       document.getElementById('map-canvas').style.width = '50%';
-      document.getElementById('map-horizontal-2').style.width = '50%';
+      document.getElementById('map-horizontal-2').style.cssText = 'width:50%;height:100%;z-index=1;top:-100%;right:-50%';
       var ourStereoMap = new google.maps.Map(document.getElementById('map-horizontal-2'),
         myMapOptions);
         
