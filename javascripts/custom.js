@@ -77,31 +77,38 @@ function initialize() {
         photosphere.setOptions(myPOV)
     }, 25);
     
-    if (Math.abs(gamma) >= 85 && Math.abs(gamma) <= 95) {
-      document.getElementById('map-canvas').style.width = '50%';
-      document.getElementById('map-horizontal-2').style.cssText = 'width:50%;height:100%;z-index=1;top:-100%;right:-50%';
-      var ourStereoMap = new google.maps.Map(document.getElementById('map-horizontal-2'),
-        myMapOptions);
-        
-      myStereoPhotosphere = ourStereoMap.getStreetView();
-      myStereoPhotosphere.setOptions(photoOptions);
-
-      streetViewService.getPanoramaByLocation(sanCarlos, radius,
-        function(result, status) {
-          if(status == google.maps.StreetViewStatus.OK) {
-            // Monitor the links_changed event to check if the current
-            // photosphere is either a custom one or the starting one
-            google.maps.event.addListener(photosphere, 'links_changed',
-              function() {
-                makeMyLinks(myStereoPhotosphere, result.location.pano);
-              });
-          }
-        });
-
-      setInterval(function(){
-        myStereoPhotosphere.setOptions(myPOV);
-      }, 25);
+    function addMyStereo (){
+      if (window.innerHeight < window.innerWidth) {
+        document.getElementById('map-canvas').style.width = '50%';
+        document.getElementById('map-horizontal-2').style.cssText = 'width:50%;height:100%;z-index=1;top:-100%;right:-50%';
+        var ourStereoMap = new google.maps.Map(document.getElementById('map-horizontal-2'),
+          myMapOptions);
+          
+        myStereoPhotosphere = ourStereoMap.getStreetView();
+        myStereoPhotosphere.setOptions(photoOptions);
+  
+        streetViewService.getPanoramaByLocation(sanCarlos, radius,
+          function(result, status) {
+            if(status == google.maps.StreetViewStatus.OK) {
+              // Monitor the links_changed event to check if the current
+              // photosphere is either a custom one or the starting one
+              google.maps.event.addListener(photosphere, 'links_changed',
+                function() {
+                  makeMyLinks(myStereoPhotosphere, result.location.pano);
+                });
+            }
+          });
+  
+        setInterval(function(){
+          myStereoPhotosphere.setOptions(myPOV);
+        }, 25);
+      }
     }
+  
+    addMyStereo();
+    window.addEventListener("orientationchange", function(){
+      addMyStereo();
+    }, false);
   }
 }
 
