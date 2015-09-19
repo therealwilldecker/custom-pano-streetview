@@ -107,7 +107,7 @@ function initialize() {
             links: photosphere.links,
             tiles: photosphere.tiles
           };
-          myStereoPhotosphere.setOptions(myStereoLocation);
+          myStereoPhotosphere.setOptions(myStereoDetails);
         }, 50);
       } else {
         document.getElementById('map-canvas').style.width='100%';
