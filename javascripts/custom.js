@@ -102,19 +102,18 @@ function initialize() {
   
         setInterval(function(){
           myStereoPhotosphere.setOptions(myPOV);
-          myStereoDetails = photosphere.panoProvider(photosphere.pano); // so close!!
-          myStereoPhotosphere.setOptions(myStereoDetails);
+          myStereoPhotosphere.panoProvider(photosphere.pano);
         }, 50);
       } else {
         document.getElementById('map-canvas').style.width='100%';
         document.getElementById('map-horizontal-2').style.display='none';
       }
     }
-/*  
+  
     addMyStereo();
     window.addEventListener("orientationchange", function(){
       addMyStereo();
-    }, false);*/
+    }, false);
   }
 }
 
