@@ -56,7 +56,7 @@ function initialize() {
       }
     });
 
-  if(window.DeviceMotionEvent!=undefined){
+  if(window.DeviceMotionEvent != undefined && window.DeviceMotionEvent != null){
     var alpha = 0;
     var beta = 0;
     var gamma = 0;
