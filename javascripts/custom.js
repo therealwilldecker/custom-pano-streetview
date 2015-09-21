@@ -82,7 +82,7 @@ function initialize() {
     
     function addMyStereo (){
       if (window.innerHeight < window.innerWidth) {
-        document.getElementById('map-canvas').style.width = '50%';
+        document.getElementById('map-canvas').style.width = '50%'; // need to resize map object
         document.getElementById('map-horizontal-2').style.cssText = 'width:50%;height:100%;z-index=1;top:-100%;right:-50%';
         var ourStereoMap = new google.maps.Map(document.getElementById('map-horizontal-2'),
           myMapOptions);
@@ -112,7 +112,9 @@ function initialize() {
         }, 25);
       } else {
         document.getElementById('map-horizontal-2').style.display='none';
-        document.getElementById('map-canvas').style.cssText = 'width:100%;height:100%;top:0;';
+        myCurrentPano = photosphere.pano;
+        initialize();
+        photosphere.setPano(myCurrentPano);
       }
     }
   
