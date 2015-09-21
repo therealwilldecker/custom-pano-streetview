@@ -56,70 +56,68 @@ function initialize() {
       }
     });
 
-  if(window.DeviceMotionEvent != undefined){
-    if(window.DeviceMotionEvent.rotationRate != undefined){
-      var alpha = 0;
-      var beta = 0;
-      var gamma = 0;
-      
-      window.ondeviceorientation = function(event){
-        alpha = Math.round(event.alpha);
-        beta = Math.round(event.beta);
-        gamma = Math.round(event.gamma);
-      }
-      
-      var myPOV;
-      
-      setInterval(function(){
-          myPOV = {
-            pov: {
-              heading: 360-alpha,
-              pitch: beta
-            }
-          };
-          photosphere.setOptions(myPOV)
-      }, 25);
-      
-      function addMyStereo (){
-        if (window.innerHeight < window.innerWidth) {
-          document.getElementById('map-canvas').style.width = '50%';
-          document.getElementById('map-horizontal-2').style.cssText = 'width:50%;height:100%;z-index=1;top:-100%;right:-50%';
-          var ourStereoMap = new google.maps.Map(document.getElementById('map-horizontal-2'),
-            myMapOptions);
-            
-          myStereoPhotosphere = ourStereoMap.getStreetView();
-          myStereoPhotosphere.setOptions(photoOptions);
+  if(window.orientation != undefined){
+    var alpha = 0;
+    var beta = 0;
+    var gamma = 0;
     
-          streetViewService.getPanoramaByLocation(sanCarlos, radius,
-            function(result, status) {
-              if(status == google.maps.StreetViewStatus.OK) {
-                // Monitor the links_changed event to check if the current
-                // photosphere is either a custom one or the starting one
-                google.maps.event.addListener(myStereoPhotosphere, 'links_changed',
-                  function() {
-                    makeMyLinks(myStereoPhotosphere, result.location.pano);
-                  });
-              }
-            });
-    
-          setInterval(function(){
-            myStereoPhotosphere.setOptions(myPOV);
-            myNewPano = getOurPhotosphere(photosphere.pano);
-            if(myNewPano != null){
-              myStereoPhotosphere.setPano(myNewPano.location.pano); // this could actually be the culprit. May have to sync link selection.
-            }
-          }, 25);
-        } else {
-          document.getElementById('map-horizontal-2').style.display='none';
-          document.getElementById('map-canvas').style.cssText = 'width:100%;height:100%;top:0;';
-        }
-      }
-    
-      addMyStereo();
-      window.addEventListener("orientationchange", function(){
-        addMyStereo();
-      }, false);
+    window.ondeviceorientation = function(event){
+      alpha = Math.round(event.alpha);
+      beta = Math.round(event.beta);
+      gamma = Math.round(event.gamma);
     }
+    
+    var myPOV;
+    
+    setInterval(function(){
+        myPOV = {
+          pov: {
+            heading: 360-alpha,
+            pitch: beta
+          }
+        };
+        photosphere.setOptions(myPOV)
+    }, 25);
+    
+    function addMyStereo (){
+      if (window.innerHeight < window.innerWidth) {
+        document.getElementById('map-canvas').style.width = '50%';
+        document.getElementById('map-horizontal-2').style.cssText = 'width:50%;height:100%;z-index=1;top:-100%;right:-50%';
+        var ourStereoMap = new google.maps.Map(document.getElementById('map-horizontal-2'),
+          myMapOptions);
+          
+        myStereoPhotosphere = ourStereoMap.getStreetView();
+        myStereoPhotosphere.setOptions(photoOptions);
+  
+        streetViewService.getPanoramaByLocation(sanCarlos, radius,
+          function(result, status) {
+            if(status == google.maps.StreetViewStatus.OK) {
+              // Monitor the links_changed event to check if the current
+              // photosphere is either a custom one or the starting one
+              google.maps.event.addListener(myStereoPhotosphere, 'links_changed',
+                function() {
+                  makeMyLinks(myStereoPhotosphere, result.location.pano);
+                });
+            }
+          });
+  
+        setInterval(function(){
+          myStereoPhotosphere.setOptions(myPOV);
+          myNewPano = getOurPhotosphere(photosphere.pano);
+          if(myNewPano != null){
+            myStereoPhotosphere.setPano(myNewPano.location.pano); // this could actually be the culprit. May have to sync link selection.
+          }
+        }, 25);
+      } else {
+        document.getElementById('map-horizontal-2').style.display='none';
+        document.getElementById('map-canvas').style.cssText = 'width:100%;height:100%;top:0;';
+      }
+    }
+  
+    addMyStereo();
+    window.addEventListener("orientationchange", function(){
+      addMyStereo();
+    }, false);
   }
 }
 
