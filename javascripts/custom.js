@@ -21,7 +21,7 @@ function initialize() {
   // OK let's setup the map and start up the controls
   var myMapOptions = {
     center: letsStartOurWalk,
-    zoom: 0
+    zoom: 16
     };
   var ourMap = new google.maps.Map(document.getElementById('map-canvas'),
     myMapOptions);
@@ -132,6 +132,7 @@ function getOurPhotosphere(pano) {
           latLng: new google.maps.LatLng(37.482282,-122.286420)
         },
         links: [],
+        zoom: 1,
         tiles: {
           tileSize: new google.maps.Size(1024, 512),
           worldSize: new google.maps.Size(1024, 512),
