@@ -102,8 +102,8 @@ function initialize() {
   
         setInterval(function(){
           myStereoPhotosphere.setOptions(myPOV);
-          myNewPano = myStereoPhotosphere.panoProvider(photosphere.pano);
-          myStereoPhotosphere.setOptions(myNewPano);
+          myNewPano = getOurPhotosphere(photosphere.pano);
+          myStereoPhotosphere.setOptions(myNewPano); // this could actually be the culprit. May have to sync link selection.
         }, 50);
       } else {
         document.getElementById('map-horizontal-2').style.display='none';
