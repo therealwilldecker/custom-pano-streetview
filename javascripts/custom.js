@@ -21,7 +21,7 @@ function initialize() {
   // OK let's setup the map and start up the controls
   var myMapOptions = {
     center: letsStartOurWalk,
-    zoom: 16
+    zoom: 0
     };
   var ourMap = new google.maps.Map(document.getElementById('map-canvas'),
     myMapOptions);
@@ -34,7 +34,6 @@ function initialize() {
     visible: true,
     panoProvider: getOurPhotosphere,
     addressControl: false,
-    zoom: 1,
     zoomControl: false
   };
   photosphere.setOptions(photoOptions);
