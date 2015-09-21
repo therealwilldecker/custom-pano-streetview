@@ -102,11 +102,12 @@ function initialize() {
   
         setInterval(function(){
           myStereoPhotosphere.setOptions(myPOV);
-          myStereoPhotosphere.panoProvider(photosphere.pano);
+          myNewPano = myStereoPhotosphere.panoProvider(photosphere.pano);
+          myStereoPhotosphere.setOptions(myNewPano);
         }, 50);
       } else {
-        document.getElementById('map-canvas').style.width='100%';
         document.getElementById('map-horizontal-2').style.display='none';
+        document.getElementById('map-canvas').style.cssText = 'width:100%;height:100%;top:0;';
       }
     }
   
