@@ -21,8 +21,7 @@ function initialize() {
   // OK let's setup the map and start up the controls
   var myMapOptions = {
     center: letsStartOurWalk,
-    zoom: 16,
-    disableDefaultUI: true
+    zoom: 16
     };
   var ourMap = new google.maps.Map(document.getElementById('map-canvas'),
     myMapOptions);
@@ -33,7 +32,8 @@ function initialize() {
   var photoOptions = {
     position: sanCarlos,
     visible: true,
-    panoProvider: getOurPhotosphere
+    panoProvider: getOurPhotosphere,
+    addressControl: false
   };
   photosphere.setOptions(photoOptions);
   
@@ -104,7 +104,7 @@ function initialize() {
           myStereoPhotosphere.setOptions(myPOV);
           myNewPano = getOurPhotosphere(photosphere.pano);
           if(myNewPano != null){
-            ourStereoMap.setStreetView(myNewPano); // this could actually be the culprit. May have to sync link selection.
+            myStereoPhotosphere.setStreetView(myNewPano); // this could actually be the culprit. May have to sync link selection.
           }
         }, 50);
       } else {
