@@ -104,7 +104,7 @@ function initialize() {
           myStereoPhotosphere.setOptions(myPOV);
           myNewPano = getOurPhotosphere(photosphere.pano);
           if(myNewPano != null){
-            ourStereoMap.setStreetView({panorama: myNewPano}); // this could actually be the culprit. May have to sync link selection.
+            myStereoPhotosphere.setPano(myNewPano.location.pano); // this could actually be the culprit. May have to sync link selection.
           }
         }, 50);
       } else {
