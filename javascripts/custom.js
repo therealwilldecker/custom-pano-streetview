@@ -132,7 +132,6 @@ function getOurPhotosphere(pano) {
           latLng: new google.maps.LatLng(37.482282,-122.286420)
         },
         links: [],
-        zoom: 1,
         tiles: {
           tileSize: new google.maps.Size(1024, 512),
           worldSize: new google.maps.Size(1024, 512),
@@ -210,6 +209,8 @@ function makeMyLinks(photosphere, letsStartOurWalk) {
   // Adds links into the street view along with photo info.
   var links = photosphere.getLinks();
   var photoId = photosphere.getPano();
+  
+  photosphere.setZoom(1);
   
   switch(photoId) {
     case letsStartOurWalk:
