@@ -210,7 +210,7 @@ function makeMyLinks(photosphere, letsStartOurWalk) {
   var links = photosphere.getLinks();
   var photoId = photosphere.getPano();
   
-  photosphere.setZoom(1);
+  photosphere.setZoom(0);
   
   switch(photoId) {
     case letsStartOurWalk:
