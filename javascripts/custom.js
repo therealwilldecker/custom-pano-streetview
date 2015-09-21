@@ -112,15 +112,12 @@ function initialize() {
         }, 25);
       } else {
         document.getElementById('map-horizontal-2').style.display='none';
-        myCurrentPano = photosphere.pano;
-        initialize();
-        photosphere.setPano(myCurrentPano);
       }
     }
   
     addMyStereo();
     window.addEventListener("orientationchange", function(){
-      addMyStereo();
+      initalize();
     }, false);
   }
 }
