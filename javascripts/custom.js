@@ -33,7 +33,9 @@ function initialize() {
     position: sanCarlos,
     visible: true,
     panoProvider: getOurPhotosphere,
-    addressControl: false
+    addressControl: false,
+    zoom: 1,
+    zoomControl: false
   };
   photosphere.setOptions(photoOptions);
   
@@ -106,7 +108,7 @@ function initialize() {
           if(myNewPano != null){
             myStereoPhotosphere.setPano(myNewPano.location.pano); // this could actually be the culprit. May have to sync link selection.
           }
-        }, 50);
+        }, 25);
       } else {
         document.getElementById('map-horizontal-2').style.display='none';
         document.getElementById('map-canvas').style.cssText = 'width:100%;height:100%;top:0;';
