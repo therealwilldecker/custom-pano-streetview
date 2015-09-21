@@ -102,9 +102,9 @@ function initialize() {
   
         setInterval(function(){
           myStereoPhotosphere.setOptions(myPOV);
-          myNewPano = getOurPhotosphere(photosphere.pano).location.pano;
+          myNewPano = getOurPhotosphere(photosphere.pano);
           if(myNewPano != null){
-            myStereoPhotosphere.pano = myNewPano; // this could actually be the culprit. May have to sync link selection.
+            myStereoPhotosphere.pano = myNewPano.location.pano; // this could actually be the culprit. May have to sync link selection.
           }
         }, 50);
       } else {
