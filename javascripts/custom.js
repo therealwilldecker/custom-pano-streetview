@@ -51,6 +51,7 @@ function initialize() {
         // photosphere is either a custom one or the starting one
         google.maps.event.addListener(photosphere, 'links_changed',
           function() {
+            photosphere.setZoom(0);
             makeMyLinks(photosphere, result.location.pano);
           });
       }
@@ -96,6 +97,7 @@ function initialize() {
               // photosphere is either a custom one or the starting one
               google.maps.event.addListener(myStereoPhotosphere, 'links_changed',
                 function() {
+                  myStereoPhotosphere.setZoom(0);
                   makeMyLinks(myStereoPhotosphere, result.location.pano);
                 });
             }
@@ -209,8 +211,6 @@ function makeMyLinks(photosphere, letsStartOurWalk) {
   // Adds links into the street view along with photo info.
   var links = photosphere.getLinks();
   var photoId = photosphere.getPano();
-  
-  photosphere.setZoom(0);
   
   switch(photoId) {
     case letsStartOurWalk:
