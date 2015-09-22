@@ -56,7 +56,9 @@ function initialize() {
           });
       }
     });
+}
 
+function initializeSterep() {
   if(window.orientation != undefined){
     var alpha = 0;
     var beta = 0;
@@ -112,14 +114,9 @@ function initialize() {
         }, 25);
       } else {
         document.getElementById('map-horizontal-2').style.display='none';
+        initialize();
       }
     }
-  
-    addMyStereo();
-    window.addEventListener("orientationchange", function(){
-      addMyStereo();
-//      initalize();
-    }, false);
   }
 }
 
@@ -273,3 +270,9 @@ function makeMyLinks(photosphere, letsStartOurWalk) {
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
+window.document.onload = function() {
+  initializeStereo();
+  window.addEventListener("orientationchange", function(){
+    initializeStereo();
+  }, false);
+}
