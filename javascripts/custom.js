@@ -7,12 +7,9 @@ for (var i = 0; i < welcomeArray.length; i++ ) {
 }
 
 var photosphere;
-
-/**
-* The photosphere that will be used as the entry point to the custom
-* photosphere set.
-*/
-var letsStartOurWalk = null;
+var myMapOptions;
+var photoOptions;
+var radius = 50;
 
 function initialize() {
   // The latlong of our starting point for the custom street view.
@@ -43,7 +40,6 @@ function initialize() {
   
   // Compute the nearest photosphere to our starting point
   // using the service and store that ID.
-  var radius = 50;
   streetViewService.getPanoramaByLocation(sanCarlos, radius,
     function(result, status) {
       if(status == google.maps.StreetViewStatus.OK) {
@@ -271,9 +267,7 @@ function makeMyLinks(photosphere, letsStartOurWalk) {
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
-window.document.onload = function() {
-  initializeStereo();
-  window.addEventListener("orientationchange", function(){
+google.maps.event.addDomListener(window, 'load', initializeStereo);
+window.addEventListener("orientationchange", function(){
     initializeStereo();
   }, false);
-}
