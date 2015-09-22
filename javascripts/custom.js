@@ -18,7 +18,7 @@ function initialize() {
   var sanCarlos = new google.maps.LatLng(37.482282,-122.286420);
   
   // OK let's setup the map and start up the controls
-  var myMapOptions = {
+  myMapOptions = {
     center: letsStartOurWalk,
     zoom: 16
     };
@@ -28,7 +28,7 @@ function initialize() {
   photosphere = ourMap.getStreetView();
   // Let's setup our streetview and make sure it is visible.
   // First, register a photosphere getter function.
-  var photoOptions = {
+  photoOptions = {
     position: sanCarlos,
     visible: true,
     panoProvider: getOurPhotosphere,
