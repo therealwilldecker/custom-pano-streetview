@@ -127,10 +127,7 @@ function initializeStereo() {
         // Here we just check the original pano and then update the
         // stereo map to match it.
         myStereoPhotosphere.setOptions(myPOV);
-        myNewPano = getOurPhotosphere(photosphere.pano);
-//        if(myNewPano != null){
-          myStereoPhotosphere.setPano(photosphere.pano);
-//        }
+        myStereoPhotosphere.setPano(photosphere.pano);
       }, 25);
     } else {
       // If we flip flop back up straight, let's reset and turn
