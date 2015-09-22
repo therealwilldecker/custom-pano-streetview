@@ -11,6 +11,8 @@ var myMapOptions;
 var photoOptions;
 var radius = 50;
 
+var letsStartOurWalk = null;
+
 function initialize() {
   // The latlong of our starting point for the custom street view.
   var sanCarlos = new google.maps.LatLng(37.482282,-122.286420);
@@ -267,7 +269,6 @@ function makeMyLinks(photosphere, letsStartOurWalk) {
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
-google.maps.event.addDomListener(window, 'load', initializeStereo);
 window.addEventListener("orientationchange", function(){
     initializeStereo();
   }, false);
