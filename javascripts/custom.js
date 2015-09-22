@@ -56,7 +56,7 @@ function initialize() {
     });
 }
 
-function initializeSterep() {
+function initializeStereo() {
   if(window.orientation != undefined){
     var alpha = 0;
     var beta = 0;
