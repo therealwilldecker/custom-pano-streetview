@@ -89,6 +89,8 @@ function initializeStereo() {
       myStereoPhotosphere = ourStereoMap.getStreetView();
       myStereoPhotosphere.setOptions(photoOptions);
 
+      var streetViewService = new google.maps.StreetViewService();
+      
       streetViewService.getPanoramaByLocation(sanCarlos, radius,
         function(result, status) {
           if(status == google.maps.StreetViewStatus.OK) {
