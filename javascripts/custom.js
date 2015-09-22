@@ -109,11 +109,12 @@ function initializeSterep() {
           myStereoPhotosphere.setOptions(myPOV);
           myNewPano = getOurPhotosphere(photosphere.pano);
           if(myNewPano != null){
-            myStereoPhotosphere.setPano(myNewPano.location.pano); // this could actually be the culprit. May have to sync link selection.
+            myStereoPhotosphere.setPano(myNewPano.location.pano);
           }
         }, 25);
       } else {
         document.getElementById('map-horizontal-2').style.display='none';
+        document.getElementById('map-canvas').style.width = '100%';
         initialize();
       }
     }
