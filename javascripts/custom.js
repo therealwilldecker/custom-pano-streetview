@@ -117,7 +117,7 @@ function initialize() {
   
     addMyStereo();
     window.addEventListener("orientationchange", function(){
-      initalize();
+//      initalize();
     }, false);
   }
 }
