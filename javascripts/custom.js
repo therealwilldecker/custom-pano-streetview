@@ -42,7 +42,7 @@ function initialize() {
   
   // Compute the nearest photosphere to our starting point
   // using the service and store that ID.
-  streetViewService.getPanoramaByLocation(sanCarlos, radius,
+  streetViewService.getPanoramaByLocation(photoOptions.position, radius,
     function(result, status) {
       if(status == google.maps.StreetViewStatus.OK) {
         // Monitor the links_changed event to check if the current
@@ -91,7 +91,7 @@ function initializeStereo() {
 
       var streetViewService = new google.maps.StreetViewService();
       
-      streetViewService.getPanoramaByLocation(sanCarlos, radius,
+      streetViewService.getPanoramaByLocation(photoOptions.position, radius,
         function(result, status) {
           if(status == google.maps.StreetViewStatus.OK) {
             // Monitor the links_changed event to check if the current
