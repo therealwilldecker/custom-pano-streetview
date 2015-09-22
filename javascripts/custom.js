@@ -81,7 +81,8 @@ function initializeStereo() {
     }, 25);
     
     if (window.innerHeight < window.innerWidth) {
-      document.getElementById('map-canvas').style.width = '50%'; // need to resize map object
+      document.getElementById('map-canvas').style.width = '50%';
+      initialize();
       document.getElementById('map-horizontal-2').style.display = 'block';
       var ourStereoMap = new google.maps.Map(document.getElementById('map-horizontal-2'),
         myMapOptions);
