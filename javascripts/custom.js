@@ -80,41 +80,39 @@ function initializeStereo() {
         photosphere.setOptions(myPOV)
     }, 25);
     
-    function addMyStereo (){
-      if (window.innerHeight < window.innerWidth) {
-        document.getElementById('map-canvas').style.width = '50%'; // need to resize map object
-        document.getElementById('map-horizontal-2').style.display = 'block';
-        var ourStereoMap = new google.maps.Map(document.getElementById('map-horizontal-2'),
-          myMapOptions);
-          
-        myStereoPhotosphere = ourStereoMap.getStreetView();
-        myStereoPhotosphere.setOptions(photoOptions);
-  
-        streetViewService.getPanoramaByLocation(sanCarlos, radius,
-          function(result, status) {
-            if(status == google.maps.StreetViewStatus.OK) {
-              // Monitor the links_changed event to check if the current
-              // photosphere is either a custom one or the starting one
-              google.maps.event.addListener(myStereoPhotosphere, 'links_changed',
-                function() {
-                  myStereoPhotosphere.setZoom(0);
-                  makeMyLinks(myStereoPhotosphere, result.location.pano);
-                });
-            }
-          });
-  
-        setInterval(function(){
-          myStereoPhotosphere.setOptions(myPOV);
-          myNewPano = getOurPhotosphere(photosphere.pano);
-          if(myNewPano != null){
-            myStereoPhotosphere.setPano(myNewPano.location.pano);
+    if (window.innerHeight < window.innerWidth) {
+      document.getElementById('map-canvas').style.width = '50%'; // need to resize map object
+      document.getElementById('map-horizontal-2').style.display = 'block';
+      var ourStereoMap = new google.maps.Map(document.getElementById('map-horizontal-2'),
+        myMapOptions);
+        
+      myStereoPhotosphere = ourStereoMap.getStreetView();
+      myStereoPhotosphere.setOptions(photoOptions);
+
+      streetViewService.getPanoramaByLocation(sanCarlos, radius,
+        function(result, status) {
+          if(status == google.maps.StreetViewStatus.OK) {
+            // Monitor the links_changed event to check if the current
+            // photosphere is either a custom one or the starting one
+            google.maps.event.addListener(myStereoPhotosphere, 'links_changed',
+              function() {
+                myStereoPhotosphere.setZoom(0);
+                makeMyLinks(myStereoPhotosphere, result.location.pano);
+              });
           }
-        }, 25);
-      } else {
-        document.getElementById('map-horizontal-2').style.display='none';
-        document.getElementById('map-canvas').style.width = '100%';
-        initialize();
-      }
+        });
+
+      setInterval(function(){
+        myStereoPhotosphere.setOptions(myPOV);
+        myNewPano = getOurPhotosphere(photosphere.pano);
+        if(myNewPano != null){
+          myStereoPhotosphere.setPano(myNewPano.location.pano);
+        }
+      }, 25);
+    } else {
+      document.getElementById('map-horizontal-2').style.display='none';
+      document.getElementById('map-canvas').style.width = '100%';
+      initialize();
     }
   }
 }
