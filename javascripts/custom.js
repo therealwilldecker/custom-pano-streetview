@@ -1,6 +1,7 @@
-var welcomeArray = ['******************************',
-'* Welcome to View My Shoes!! *',
-'******************************'];
+var welcomeArray = ['*******************************',
+'* Welcome to View My Shoes!!  *',
+'* and a special welcome to STL*',
+'*******************************'];
 
 for (var i = 0; i < welcomeArray.length; i++ ) {
   console.log(welcomeArray[i]);
@@ -143,6 +144,44 @@ function initializeStereo() {
 function getOurPhotosphere(pano) {
   // this will provide a new photosphere to streetviews
   switch(pano){
+    case 'winnieWalkingTheDog':
+      return {
+        location: {
+          pano: 'winnieWalkingTheDog',
+          description: 'Walking the Dog',
+          latLng: new google.maps.LatLng(37.482282,-122.286420)
+        },
+        links: [],
+        tiles: {
+          tileSize: new google.maps.Size(1024, 512),
+          worldSize: new google.maps.Size(1024, 512),
+          // The heading at the origin of the photosphere
+          centerHeading: 280,
+          getTileUrl: function() {
+            return 'https://farm6.staticflickr.com/5812/23041657015_4abf7f8790_b.jpg';
+            }
+          }
+        };
+        break;
+    case 'winniePlayingGuitar':
+      return {
+        location: {
+          pano: 'winniePlayingGuitar',
+          description: 'Playing Guitar',
+          latLng: new google.maps.LatLng(37.482282,-122.286420)
+        },
+        links: [],
+        tiles: {
+          tileSize: new google.maps.Size(1024, 512),
+          worldSize: new google.maps.Size(1024, 512),
+          // The heading at the origin of the photosphere
+          centerHeading: 280,
+          getTileUrl: function() {
+            return 'https://farm6.staticflickr.com/5673/23028115892_afd25248f5_b.jpg';
+            }
+          }
+        };
+        break;
     case 'myFavoriteView':
       return {
         location: {
@@ -230,10 +269,42 @@ function makeMyLinks(photosphere, letsStartOurWalk) {
     case letsStartOurWalk:
       links.push({
         heading: 235,
+        description: 'Winnie walks the dog',
+        pano: 'winnieWalkingTheDog'
+      });
+      break;
+    case 'winnieWalkingTheDog':
+      links.push({
+        heading: 55,
+        description: 'Back',
+        pano: letsStartOurWalk
+      },
+      {
+        heading: 200,
+        description: 'Winnie playing guitar',
+        pano: 'winniePlayingGuitar'
+      });
+      break;
+    case 'winniePlayingGuitar':
+      links.push({
+        heading: 55,
+        description: 'Walking the dog',
+        pano: 'winnieWalkingTheDog'
+      },
+      {
+        heading: 200,
+        description: 'Back to start',
+        pano: letsStartOurWalk
+      });
+      break;
+/* Commenting out temporarily in order to switch to Winnie panos
+    case letsStartOurWalk:
+      links.push({
+        heading: 235,
         description: 'My Favorite View',
         pano: 'myFavoriteView'
       });
-      break;
+      break;*/
     case 'myFavoriteView':
       links.push({
         heading: 55,
